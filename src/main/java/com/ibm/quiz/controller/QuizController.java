@@ -11,35 +11,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-
 import java.util.*;
 
 @RestController
-@CrossOrigin(origins="http://localhost:3000")
-public class QuizController{
+@CrossOrigin(origins = "http://alex-react-demo-default.apps-crc.testing/")
+public class QuizController {
 
     @Autowired
     private QuizService quizService;
 
-    @RequestMapping(path="/")
-    public String ping(){
+    @RequestMapping(path = "/")
+    public String ping() {
         return "Hello World";
     }
 
-    @RequestMapping(path="/questions")
-    public List<Question> getAllQuestions(){
+    @RequestMapping(path = "/questions")
+    public List<Question> getAllQuestions() {
         return quizService.getAllQuestions();
     }
 
-    @RequestMapping(path="/get-question")
-    public Question getQuestion(@RequestParam int id){
+    @RequestMapping(path = "/get-question")
+    public Question getQuestion(@RequestParam int id) {
         return quizService.getQuestion(id);
     }
 
-    @PostMapping(path="/add-question")
-    public Question saveQuestion(@RequestBody Question q){
+    @PostMapping(path = "/add-question")
+    public Question saveQuestion(@RequestBody Question q) {
         return quizService.saveQuestion(q);
     }
 
 }
-
